@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gorilla/websocket"
 	"log"
 	"strings"
 	"time"
@@ -11,12 +12,16 @@ import (
 )
 
 // Const console message that informs you about forceful autobalance.
-const teamSwitchMessage = "You have switched to team BLU and will receive 500 experience points at the end of the round for changing teams."
+//const teamSwitchMessage = "You have switched to team BLU and will receive 500 experience points at the end of the round for changing teams."
 
 // Slice of player info cache struct that holds the player info
 var playersInGame []*utils.PlayerInfo
 
+var websocketConnection *websocket.Conn
+
 func main() {
+	// Start websocket for IPC with UI-Client
+	go network.StartWebsocket(27689, onWebsocketConnectCallback)
 
 	// Init the grok patterns
 	utils.GrokInit()
@@ -103,6 +108,15 @@ func main() {
 
 			// Add the player to the DB
 			db.AddPlayer(player)
+
+			if websocketConnection != nil {
+				network.SendPlayers(websocketConnection, playersInGame)
+			}
 		}
 	}
+}
+
+func onWebsocketConnectCallback(c *websocket.Conn) {
+	websocketConnection = c
+	network.SendPlayers(c, playersInGame)
 }

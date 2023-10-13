@@ -66,8 +66,7 @@ func GrokInit() {
 
 // GrokParse parses the given line with the main grok pattern
 func GrokParse(line string) (*PlayerInfo, error) {
-
-	parsed := gc.ParseString(line)
+	parsed := gc.ParseString(TrimCommon(line))
 
 	if len(parsed) == 0 {
 		return nil, errors.New("failed to parse line")
@@ -163,14 +162,14 @@ func LogPathDection() string {
 		case "linux":
 
 			// Get current os user name
-			user, err := user.Current()
+			currentUser, err := user.Current()
 			if err != nil {
 				log.Fatalf("Unable to determin the current OS User: %v", err)
 			}
-			osUSerName := user.Username
+			osUserName := currentUser.Username
 
-			log.Println("OS User: ", osUSerName)
-			tf2LogPath = `/home/` + osUSerName + `/.local/share/Steam/steamapps/common/Team Fortress 2/tf/console.log`
+			log.Println("OS User: ", osUserName)
+			tf2LogPath = `/home/` + osUserName + `/.local/share/Steam/steamapps/common/Team Fortress 2/tf/console.log`
 			log.Printf("Linux Detected. Log Path Defaulting to: \n%s\n", tf2LogPath)
 
 		default:
@@ -216,4 +215,9 @@ func Steam3IDToSteam64(steam3ID int64) int64 {
 // removeQuotes removes all quotes from a string
 func removeQuotes(str string) string {
 	return strings.ReplaceAll(str, "\"", "")
+}
+
+// trim newlines, and tabs from string
+func TrimCommon(in string) string {
+	return strings.TrimSuffix(strings.TrimSuffix(in, "\n"), "\r")
 }
