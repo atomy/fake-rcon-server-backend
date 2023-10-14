@@ -55,7 +55,7 @@ func SendPlayers(c *websocket.Conn, players []*utils.PlayerInfo) {
 	//log.Printf("Sending players, json-payload is: %s", string(jsonData))
 
 	if err := c.WriteMessage(websocket.TextMessage, jsonData); err != nil {
-		log.Panicf("ERROR while sending players as websocket-message: %v", err)
+		log.Printf("ERROR while sending players as websocket-message: %v", err)
 		return
 	}
 }

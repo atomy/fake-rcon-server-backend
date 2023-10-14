@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/nxadm/tail"
 	"github.com/trivago/grok"
@@ -41,6 +42,7 @@ type PlayerInfo struct {
 	Ping          int
 	Loss          int
 	State         string
+	LastSeen      int64
 }
 
 // ChatInfo is a struct containing all the info we need about a chat message
@@ -112,6 +114,7 @@ func GrokParse(line string) (*PlayerInfo, error) {
 		Ping:          ping,
 		Loss:          loss,
 		State:         parsed["state"],
+		LastSeen:      time.Now().Unix(),
 	}
 
 	return &playerData, nil
