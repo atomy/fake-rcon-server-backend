@@ -132,7 +132,7 @@ func handleConnection(conn net.Conn) {
 			log.Println("Error reading packetSize:", err)
 			return
 		} else {
-			log.Printf("Read packetSize is: %d\n", packetSize)
+			// log.Printf("Read packetSize is: %d\n", packetSize)
 		}
 
 		// Read packetID bytes from wire.
@@ -141,7 +141,7 @@ func handleConnection(conn net.Conn) {
 			log.Println("Error reading packetID:", err)
 			return
 		} else {
-			log.Printf("Read packetID is: %d\n", packetID)
+			// log.Printf("Read packetID is: %d\n", packetID)
 		}
 
 		// Read packetType bytes from wire.
@@ -150,7 +150,7 @@ func handleConnection(conn net.Conn) {
 			log.Println("Error reading packetType:", err)
 			return
 		} else {
-			log.Printf("Read packetType is: %d\n", packetType)
+			// log.Printf("Read packetType is: %d\n", packetType)
 		}
 
 		// Read the packet body based on the size
@@ -206,6 +206,9 @@ func getResponseForCommand(command string) string {
 			log.Println("Error while calling ReadFileToString(), Error:", err)
 			return ""
 		}
+
+		// Also write response to gamelog-file cause normally client-rcon-server doesn't return anything on *status* command
+		util.WriteToGameLogFile(fileContent)
 
 		return fileContent
 	case "name":
