@@ -1,0 +1,3 @@
+"name" = "atomy" ( def. "unnamed" )
+ archive server_can_execute
+ - Current user name

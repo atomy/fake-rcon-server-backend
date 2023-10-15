@@ -1,0 +1,26 @@
+version : 7882260/24 7882260 secure
+hostname: Fffffffffffff | Frankfurt | 8 | Community
+udp/ip  : 111.111.222.122:27085
+steamid : [G:1:1231231231] (123123123123123)
+account : not logged in  (No account specified)
+map     : workshop/cp_reckoner_rc6.ugc1111111 at: 0 x, 0 y, 0 z
+tags    : cp,nocrits,nodmgspread,fffffff
+sourcetv:  123.111.111.111:27085, delay 0.0s
+players : 14 humans, 1 bots (33 max)
+# userid name                uniqueid            connected ping loss state
+edicts  : 799 used of 2048 max
+#      2 "FFFFFF | Frankfurt | 8 | Co" BOT                       active
+#    578 "Discount Magician" [U:1:111123]      07:43       60    0 active
+#    579 "atomy"             [U:1:245234]        00:14       66   43 active
+#    510 "BallaZz"           [U:1:156235]      1:30:44    49    0 active
+#    570 "volkiano"          [U:1:4213]     24:16       60    0 active
+#    467 "kektuse"           [U:1:123124]      2:10:45    60    0 active
+#    555 "Captain HandicappedCock" [U:1:123123] 48:31     60    0 active
+#    572 "King Sunshine"     [U:1:1232222]     23:21       74    0 active
+#    532 "Musica Universalis" [U:1:12355]     1:09:49   201    1 active
+#    533 "Majestic"          [U:1:85484]       1:09:46   159    1 active
+#    574 "Bewewewe"        [U:1:245636]    20:43       56    0 active
+#    551 "thia"              [U:1:665544]     50:41       76    0 active
+#    502 "b r o o g ?"       [U:1:6217565]      1:37:33    58    0 active
+#    561 "Kan0_"             [U:1:71548631]     43:10       45    0 active
+#    518 "tiia"              [U:1:4987343]       1:27:21    40    0 active
