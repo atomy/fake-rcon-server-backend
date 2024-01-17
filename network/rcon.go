@@ -220,6 +220,15 @@ func getResponseForCommand(command string) string {
 		}
 
 		return fileContent
+	case "tf_lobby_debug":
+		fileContent, err := util.ReadFileToString("data/tf_lobby_debug-response.txt")
+		if err != nil {
+			// Handle the error
+			log.Println("Error while calling ReadFileToString(), Error:", err)
+			return ""
+		}
+
+		return fileContent
 	default:
 		log.Panicf("ERROR, unknown command: '%s'\n", command)
 		return ""
